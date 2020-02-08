@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+  <%- include("Includes/head.ejs") -%>
+  
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Main Header -->
+    <%- include("Includes/header.ejs") -%>
+    <!-- Menu lado esquerdo -->
+    <%- include("Includes/sidebar.ejs") -%>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Gerar Arquivo
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Gerar Arquivo</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content container-fluid ">
+        <div class="box">
+          <!-- <div class="box-header">
+            <h3 class="box-title">Receber</h3>
+            <a href="#" class="btn btn-xs pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i
+                class="fa fa-plus"></i> Novo</a>
+          </div> -->          
+          
+          <div class="content " id="modal-create">
+          <div class="row">
+            <div class="col-md-4">
+              <!-- <div class="modal-content" style="border-top: 3px solid #00a65a;"  style="border-top: 3px solid blue;"> -->
+              <div class="modal-content"></div>
+                <form method="post" action="/admin/recebimento">
+                  
+                  <div class="modal-body">
+                      <div class="form-group">
+                        <label for="inputTitleCreate">Empresa Conveniada</label>
+                        <select class="form-control" id="cboCidades">
+                            <option value=""></option>
+                            <option value="scs">Saae - São Caetano do Sul</option>
+                            <option value="sa">Saae - Santo André</option>
+                            <option value="sbc">Saae - São Bernardo do Campo</option>
+                        </select>
+                        <!-- <input type="text" class="form-control" id="inputTitleCreate" name="cod_barras"> -->
+                        <label>Data</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                      </div>
+                      <!-- <div class="form-group">
+                        <label for="inputDescriptionCreate">Descrição</label>
+                        <textarea class="form-control" id="inputDescriptionCreate" name="description"></textarea>
+                      </div> -->
+                      <!-- <div class="form-group col-md-4">
+                        <label>Data:</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                          <input type="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                      </div> -->
+                    <!-- /.input group -->
+                      </br>
+                    <div>
+                      <button type="button" class="btn btn-block btn-success btn-lg "><i class="fa fa-save"></i> Download arquivo</button>
+                    </div> 
+                  </div>              
+                  <div class="row col-md-12 ">
+                    
+                    </br>                                        
+                </div> 
+                </form>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+          </div> 
+           
+            <!-- /.modal-dialog -->
+        </div>
+
+          
+        </div>
+      
+
+      </section>
+
+      
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    
+
+    
+
+    <!-- Main Footer -->
+    <%- include("Includes/footer.ejs") -%>
+
+  </div>  
+  <script src="controllers/recebimento/RecebimentoController.js"></script>
+  <script src="controllers/recebimento.js"></script>
+  
+  <!-- jQuery 3 -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- PACE -->
+  <script src="bower_components/PACE/pace.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- page script -->
+  <script type="text/javascript">
+    // To make Pace works on Ajax calls
+    $(document).ajaxStart(function () {
+      Pace.restart()
+    })
+    $('.ajax').click(function () {
+      $.ajax({
+        url: '#', success: function (result) {
+          $('.ajax-content').html('<hr>Ajax Request Completed !')
+        }
+      })
+    })
+  </script>
+
+
+  
+  
+
+</body>
+
+</html>

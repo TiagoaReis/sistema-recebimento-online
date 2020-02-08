@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+  <%- include("Includes/head.ejs") -%>
+
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+    <!-- Main Header -->
+    <%- include("Includes/header.ejs") -%>
+    <!-- Menu lado esquerdo -->
+    <%- include("Includes/sidebar.ejs") -%>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Empresa Convêniada
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Convêniada</li>
+        </ol>
+      </section>
+
+      <!-- Main content btn-default pull-left  btn btn-xs pull-right data-toggle="modal" data-target="#modal-create"--> 
+      <section class="content container-fluid">
+          <% if (typeof error === "string") {%>
+            <div class="alert alert-danger">
+              <%= error%>
+            </div>
+            <% } %>
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title">Dados</h3>
+            <a href="#" class="btn pull-right btn-warning" data-toggle="modal" data-target="#modal-create" ><i
+                class="fa fa-plus"></i> Alterar dados</a>
+          </div>
+          <!-- /.box-header data-toggle="modal" data-target="#modal-update-password" data-toggle="modal" data-target="#modal-update"-->
+          <!-- <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 10px">Cód. Convêniada </th>
+                  <th>Nome</th>
+                  <th>Logradouro</th>
+                  <th>Bairro</th>
+                  <th>Cidade</th>
+                  <th>Fone</th>
+                  <th>Cod. Febraban</th>
+                  <th>Drive</th>
+                  <th style="min-width: 134px;">Ações</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                                      
+                  <tr >
+                      <td><%= data.cod_empresa_conveniada %></td>
+                      <td><%= data.nome_empresa %></td>
+                      <td><%= data.logradouro%></td>
+                      <td><%= data.bairro%> </td>
+                      <td><%= data.cidade %></td>
+                      <td><%= data.fone %></td>
+                      <td><%= data.cod_febraban %></td>
+                      <td><%= data.drive %></td>
+                      <td>
+                          <button type="button" class="btn btn-info" ><i class="fa fa-pencil"></i> Editar</button>&nbsp;
+                          <button type="button" class="btn btn-warning btn-update" >
+                              <i class="fa fa-lock"></i> Alterar Senha</button>&nbsp;
+                          <button type="button" class="btn btn-danger btn-delete"><i class="fa fa-trash"></i> Excluir</button></td>
+                  </tr>
+                  
+              </tbody>
+          </table> -->
+          <div class="box-body no-padding">
+              <div class="col-md-6">
+                  <div class="box box-solid">
+                    <div class="box-header with-border">
+                      <!-- <i class="fa fa-text-width"></i> -->
+        
+                      <h3 class="box-title"><%= data.nome_empresa%></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    
+                    <div class="box-body">
+                      <blockquote>
+                        <h4>Cód. Convêniada - <%= data.cod_empresa_conveniada%></h4>
+                        <p>End: <%= data.logradouro%>, <%= data.bairro%> </p>
+                        <small>Município: <cite title="Source Title"><%= data.cidade%></cite></small>
+                        <small>tel: <%= data.fone%> | Contato: <%= data.nome_contacto%><cite title="Source Title"> | cod febraban: <%= data.cod_febraban%> </cite></small>
+                        <small>Sequencial Arq.: <%= data.sequencial_arquivo%> | Caminho Arq.: <%= data.drive%></small>
+                      </blockquote>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+                </div>
+            <!-- <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Foto</th>
+                  <th>Título</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
+                  <th style="min-width: 134px;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1.</td>
+                  <td><img src="dist/img/boxed-bg.jpg" alt="" style="height: 18px;"></td>
+                  <td><%= data.nome_empresa%></td>
+                  <td><%= data.nome_agencia%></td>
+                  <td><%= data.sigla%></td>
+                  <td><button type="button" class="btn btn-xs btn-info btn-update" data-toggle="modal" data-target="#modal-update"><i
+                        class="fa fa-pencil"></i> Editar</button>&nbsp;<button type="button" class="btn btn-xs btn-danger btn-delete"><i
+                        class="fa fa-trash"></i> Excluir</button></td>
+                </tr>
+              </tbody>
+            </table> -->
+          </div>
+          <!-- /.box-body -->
+        </div>
+
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper action="/admin/empresa_conveniada" -->
+
+    <div class="modal fade" id="modal-create">
+        <div class="modal-dialog">
+            
+          <div class="modal-content" style="border-top: 3px solid #cc7707;">
+            <form method="post" >              
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Cadastro de Empresa Convêniada</h4>
+              </div>
+              
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="inputTitleCreate">Nome Empresa Convêniada</label>
+                  <input type="text" class="form-control" id="inputTitleCreate" name="nome_empresa">
+                </div>                
+                <div >                  
+                  <div class="box-body">
+                    <div class="row">
+                      <div class="col-xs-3">
+                          <label for="inputDescriptionCreate">Logradouro</label>
+                        <input type="text" class="form-control" placeholder="" name="logradouro">
+                      </div>
+                      <div class="col-xs-9">
+                        <label for="inputDescriptionCreate">Complemento</label>
+                        <input type="text" class="form-control" placeholder="" name="compl_imovel">
+                      </div>                     
+                    </div>
+                  </div>
+                  <!-- /.box-body -->
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                      <div class="col-xs-3">
+                          <label for="inputNumeroCreate">Numero</label>
+                        <input type="text" class="form-control" placeholder="" name="num_imovel">
+                      </div>
+                      <div class="col-xs-6">
+                        <label for="inputBairroCreate">Bairro</label>
+                        <input type="text" class="form-control" placeholder="" name="bairro">
+                      </div> 
+                      <!-- <div class="col-xs-3">
+                          <label for="inputComplementoCreate">Complemento</label>
+                          <input type="text" class="form-control" placeholder="" name="complemento">
+                        </div>                     
+                    </div> -->
+                </div>    
+                <div class="box-body">
+                    <div class="row">
+                      <div class="col-xs-8">
+                          <label for="inputCidadeCreate">Cidade</label>
+                        <input type="text" class="form-control" placeholder="" name="cidade">
+                      </div>
+                      <div class="col-xs-4">
+                        <label for="inputTelefoneCreate">Telefone</label>
+                        <input type="text" class="form-control" placeholder="" name="fone">
+                      </div>                                         
+                    </div>
+                  </div> 
+                <!-- <div class="form-group">
+                  <label for="inputPhotoCreate">Foto</label>
+                  <img style="max-width: 128px; max-height: 128px; display: block;" src="dist/img/boxed-bg.jpg">
+                  <input type="file" class="form-control" id="inputPhotoCreate" name="photo">
+                </div> -->
+              </div>
+              <div class="box-body">
+                  <div class="row">
+                    <div class="col-xs-3">
+                        <label for="inputContatoCreate">Contato</label>
+                      <input type="text" class="form-control" placeholder="" name="contato">
+                    </div>
+                    <div class="col-xs-6">
+                      <label for="inputRamalCreate">Ramal Tel</label>
+                      <input type="text" class="form-control" placeholder=""name="ramal_contacto">
+                    </div>                     
+              </div>  
+              <div class="box-body">
+                  <div class="row">
+                    <div class="col-xs-8">
+                        <label for="inputDriveCreate">Caminho do Arquivo</label>
+                      <input type="text" class="form-control" placeholder="" name="drive">
+                    </div>
+                    <div class="col-xs-4">
+                      <label for="inputFebrabanCreate">Cód. Febraban</label>
+                      <input type="text" class="form-control" placeholder="" name="cod_febraban">
+                    </div>                                         
+                  </div>
+                </div> 
+              <!-- <div class="form-group">
+                <label for="inputPhotoCreate">Foto</label>
+                <img style="max-width: 128px; max-height: 128px; display: block;" src="dist/img/boxed-bg.jpg">
+                <input type="file" class="form-control" id="inputPhotoCreate" name="photo">
+              </div> -->
+            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-warning">Salvar dados</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+  
+
+    <div class="modal fade" id="modal-update">
+      <div class="modal-dialog">
+        <div class="modal-content" style="border-top: 3px solid #00c0ef;">
+          <form method="post">
+            <input type="hidden" name="id">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title">Editar Menu</h4>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="inputTitleUpdate">Título</label>
+                <input type="text" class="form-control" id="inputTitleUpdate" name="title">
+              </div>
+              <div class="form-group">
+                <label for="inputDescriptionUpdate">Descrição</label>
+                <textarea class="form-control" id="inputDescriptionUpdate" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="inputPriceUpdate">Preço</label>
+                <input type="number" class="form-control" id="inputPriceUpdate" name="price">
+              </div>
+              <div class="form-group">
+                <label for="inputPhotoUpdate">Foto</label>
+                <img style="max-width: 128px; max-height: 128px; display: block;" src="dist/img/boxed-bg.jpg">
+                <input type="file" class="form-control" id="inputPhotoUpdate" name="photo">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-info">Salvar</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <!-- Main Footer -->
+    <%- include("Includes/footer.ejs") -%>
+
+  </div>
+
+  <!-- jQuery 3 -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- PACE -->
+  <script src="bower_components/PACE/pace.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- page script -->
+  <script type="text/javascript">
+    // To make Pace works on Ajax calls
+    $(document).ajaxStart(function () {
+      Pace.restart()
+    })
+    $('.ajax').click(function () {
+      $.ajax({
+        url: '#', success: function (result) {
+          $('.ajax-content').html('<hr>Ajax Request Completed !')
+        }
+      })
+    })
+
+    // let formCreate = document.querySelector("#modal-create form")
+
+    //   formCreate.addEventListener('submit', e => {
+    //     e.preventDefault();
+    //     let formCreatData = new FormData(formCreate);
+    //     fetch("/admin/empresa_conveniada", {
+    //       method:'POST',
+    //       body: formCreatData
+    //     })
+    //       .then(response => response.json())
+    //       .then(json => {
+    //         console.log("JSON", json);
+    //       });
+        
+    //   });
+    
+    document.querySelector('.btn-info').addEventListener('click', e => {
+      let tr = e.path.find(el =>{
+        return (el.tagName.toUpperCase() === 'TR')
+      })
+      let data = JSON.parse(tr.dataset.row);
+      console.log(data);
+    });
+
+    // [...document.querySelectorAll('.btn-warning')].forEach(element => {
+
+    // element.addEventlistener('click', e => {
+    //   console.log(e);
+    // });
+        
+  </script>
+
+</body>
+
+</html>

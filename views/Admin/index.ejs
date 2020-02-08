@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+
+  <%- include("Includes/head.ejs") -%>
+  
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+
+    <%- include("Includes/header.ejs") -%>
+    <!-- Left side column. contains the logo and sidebar -->
+    <%- include("Includes/sidebar.ejs") -%>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Tela Inicial
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+          <li class="active">Painel Inicial</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content container-fluid">
+
+        <div class="row">
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box" onclick="window.location.href = '/admin/recebimento'" style="cursor:pointer">
+              <span class="info-box-icon bg-green">
+                <i class="fa fa-check-square"></i>
+              </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Receber</span>
+                <span class="info-box-number">Recebimento de contas</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box" onclick="window.location.href = '/admin/contas_recebidas'" style="cursor:pointer">
+              <span class="info-box-icon bg-aqua">
+                <i class="fa fa-line-chart"></i>
+              </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Recebidas no mês</span>
+                <span class="info-box-number"><%= data.totalrecebidas %> guias</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+
+          <!-- fix for small devices only -->
+          <div class="clearfix visible-sm-block"></div>
+
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box" onclick="window.location.href = '/admin/contas_estornadas'" style="cursor:pointer">
+              <span class="info-box-icon bg-red">
+                <i class="fa  fa-eraser"></i>
+              </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Estornadas no mês</span>
+                <span class="info-box-number"><%= data.totalestornadas %> guias </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-3 col-sm-6 col-xs-12">
+            <div class="info-box" onclick="window.location.href = '/users'" style="cursor:pointer">
+              <span class="info-box-icon bg-yellow">
+                <i class="fa fa-share-square"></i>
+              </span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Ultimo Arquivo</span>
+                <span class="info-box-number">Data <%= data.dia %>/<%= data.mes %>/<%= data.ano %></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <div class="modal-header">     
+          <h3 class=" ">Resumo </h3>                       
+        </div>
+        <!-- <div class="modal-header">     
+          <h3 class="info-box-text">Total recebidas no mês R$ <%= data.total_recebidas %></h3>                       
+        </div> -->
+
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+             
+              <h3><%= data.total_dia.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %><sup style="font-size: 20px"></sup></h3>
+              
+              <p>Total no dia</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="contas_recebidas" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+          <!-- ./col -->
+          <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+              <div class="inner">
+                <h3><%= data.total_recebidas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %><sup style="font-size: 20px"></sup></h3>
+  
+                <p>Total no mês</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="contas_recebidas" class="small-box-footer"><i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+
+          </div>    
+          <!-- ./col -->
+        </div>
+
+        
+          <!-- /.box-body-->
+        </div>
+          
+          <!-- /.box-body-->
+        </div>
+       
+
+      <!-- right col -->
+      </div>
+      <!-- /.content -->
+    </section>
+    
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <%- include("Includes/footer.ejs") -%>
+
+  </div>
+
+  <!-- jQuery 3 -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- PACE -->
+  <script src="bower_components/PACE/pace.min.js"></script>
+  <!-- SlimScroll -->
+  <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- page script -->
+  <script type="text/javascript">
+    // To make Pace works on Ajax calls
+    $(document).ajaxStart(function () {
+      Pace.restart()
+    })
+    $('.ajax').click(function () {
+      $.ajax({
+        url: '#', success: function (result) {
+          $('.ajax-content').html('<hr>Ajax Request Completed !')
+        }
+      })
+    })
+  </script>
+
+  
+
+
+</body>
+
+</html>
