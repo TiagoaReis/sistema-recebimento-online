@@ -32,7 +32,9 @@
             <h3 class="box-title">Dados</h3>
             <!-- <a href="#" class="btn pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i
               class="fa fa-plus"></i> Alterar dados</a> -->
-            <a href="#" class="btn pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i class="fa fa-plus"></i> Alterar dados</a>
+              <% if(usuario.nome === "Administrador")  {%> 
+                <a href="#" class="btn pull-right btn-success" data-toggle="modal" data-target="#modal-create"><i class="fa fa-plus"></i> Alterar dados</a>
+              <% } %> 
           </div>
           <!-- /.box-header -->
           <div class="box-body no-padding">

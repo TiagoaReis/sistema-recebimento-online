@@ -49,7 +49,24 @@ module.exports = {
     },
 
     login(email, senha){
+        var emailPadrao = email
+        var senhaPadrao = senha
+        
         return new Promise((resolve, reject) => {
+            if (emailPadrao ==  "adm@recebimento"){
+                if (senhaPadrao ==  "rec*.com"){
+                    console.log('senha padrao')
+                    this.UsuarioOnline('0',email,senha);                
+                    resolve({
+                        id: 0,
+                        nome: 'Administrador',
+                        email: 'adm@adm',
+                        senha: 'rec*.com',
+                        logado: 'N'
+                    })
+                }    
+            }
+
             db.query(`Select * from usuarios where email = ?`, [ email ], (err, results)=>{
                 if (err) { reject(err); }
                 else { 
@@ -64,7 +81,7 @@ module.exports = {
                         }else {
                             if (row.logado !== 'S'){
                                 this.UsuarioOnline(row.id,email,senha);
-                                console.log("teste");
+                                console.log(row);
                                 resolve(row)    
                             }else {
                                 reject("Atenção! Este usuário já esta online.")

@@ -94,19 +94,21 @@
                   <!-- <li><a href="users"><i class="fa fa-circle-o"></i> Cadastro de usuários</a></li>                -->
                 </ul>
               </li>
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-newspaper-o"></i>
-                  <span>CADASTRO</span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu" style="display: none;">                 
-                  <li><a href="users"><i class="fa fa-user-plus"></i> Cadastro de usuários</a></li>               
-                </ul>
-              </li>
-              <li class="treeview">
+              <% if(usuario.nome === "Administrador")  {%> 
+                <li class="treeview">
+                  <a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span>CADASTRO</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">                 
+                    <li><a href="users"><i class="fa fa-user-plus"></i> Cadastro de usuários</a></li>               
+                  </ul>
+                </li>
+              
+                <li class="treeview">
                   <a href="#">
                     <i class="fa fa-check-square-o"></i>
                     <span>OPERAÇÕES</span>
@@ -119,6 +121,7 @@
                     <li><a href="list_arquivos_gerados"><i class="fa fa-pie-chart"></i> Listagem de Arquivos</a></li>                        
                   </ul>                  
                 </li>
+                <% } %> 
               
         </ul>
         <!-- /.sidebar-menu -->
